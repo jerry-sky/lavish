@@ -1,5 +1,11 @@
 **/node_modules
 **/dist
 
+
 # IDE
 .vscode
+
+
+# ignore other package managers
+package-lock.json
+yarn.lock

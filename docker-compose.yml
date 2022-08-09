@@ -1,0 +1,36 @@
+version: '3.9'
+
+networks:
+  default:
+
+services:
+  db:
+    container_name: noted-db
+    image: postgres:13-alpine
+    restart: always
+    env_file:
+      - ./server/.env
+    volumes:
+      - './private/.db:/var/lib/postgresql/data'
+
+  server:
+    container_name: noted-server
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - 3001:3000
+    env_file:
+      - ./server/.env
+    user: ${uid:-1000}:${gid:-1000}
+
+  client:
+    container_name: noted-client
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    ports:
+      - 80:3000
+    env_file:
+      - ./client/.env
+    user: ${uid:-1000}:${gid:-1000}
