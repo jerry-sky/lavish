@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { url } from '@roxi/routify'
-
-	let x = 27
 </script>
 
-<p>Index page {x}</p>
+<h1>
+	Lavish
+</h1>
 
-<a href={$url('./about')}>About me</a>
+<a href={$url('./about')}>About</a>
