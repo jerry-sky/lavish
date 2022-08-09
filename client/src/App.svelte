@@ -41,8 +41,7 @@
 		filter: drop-shadow(0 0 2em #ff3e00aa);
 	}
 
-	$gray: #888;
 	.read-the-docs {
-		color: $gray;
+		color: #888;
 	}
 </style>
