@@ -9,3 +9,7 @@
 # ignore other package managers
 package-lock.json
 yarn.lock
+
+
+# client
+client/.routify
