@@ -12,6 +12,6 @@ touch server/dist/server/src/index.js
 
 docker-compose \
 	-f docker-compose.yml \
-	-f docker-compose-dev.yml \
+	-f docker-compose.dev.yml \
 	up \
 	--force-recreate

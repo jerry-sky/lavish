@@ -13,3 +13,8 @@ yarn.lock
 
 # client
 client/.routify
+
+
+# database stash
+private
+!private/.gitkeep
