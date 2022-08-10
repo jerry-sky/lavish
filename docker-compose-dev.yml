@@ -6,7 +6,7 @@ services:
       - 5432:5432
 
   db-admin:
-    container_name: noted-db-admin
+    container_name: lavish-db-admin
     image: adminer
     restart: always
     ports:
@@ -20,6 +20,3 @@ services:
       - 3001:3000
     volumes:
       - ./:/wrk
-
-  client:
-    entrypoint: ['echo', 'dev: client disabled']

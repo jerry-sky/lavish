@@ -1,0 +1,2 @@
+# keep environment variables out of version control
+.env
