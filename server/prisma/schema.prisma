@@ -8,8 +8,60 @@ generator client {
 }
 
 model User {
-  id                 Int                @id @unique @default(autoincrement())
-  email              String             @unique @db.VarChar(255)
-  username           String             @unique @db.VarChar(63)
-  password           String
+  ID           Int      @id @unique @default(autoincrement())
+  Email        String   @unique @db.VarChar(255)
+  Username     String   @unique @db.VarChar(63)
+  Password     String
+  GameSessions Player[]
+}
+
+model Player {
+  ID Int @id @unique @default(autoincrement())
+
+  User   User @relation(fields: [userID], references: [ID])
+  Game   Game @relation(fields: [gameID], references: [ID])
+  userID Int
+  gameID Int
+
+  Posessions         PlayerPosessions @relation(fields: [playerPosessionsID], references: [ID])
+  playerPosessionsID Int              @unique
+}
+
+model Game {
+  ID      Int      @id @unique @default(autoincrement())
+  Players Player[]
+}
+
+model PlayerPosessions {
+  ID            Int     @id @unique @default(autoincrement())
+  Red           Int     @db.SmallInt
+  Green         Int     @db.SmallInt
+  Blue          Int     @db.SmallInt
+  Black         Int     @db.SmallInt
+  White         Int     @db.SmallInt
+  Golden        Int     @db.SmallInt
+  AcquiredCards Card[]  @relation("Acquire")
+  ChartedCards  Card[]  @relation("Charter")
+  Player        Player?
+}
+
+enum Colour {
+  Red
+  Green
+  Blue
+  Black
+  White
+}
+
+model Card {
+  ID        Int                @id @unique @default(autoincrement())
+  CostRed   Int
+  CostGreen Int
+  CostBlue  Int
+  CostBlack Int
+  CostWhite Int
+  Score     Int
+  Colour    Colour
+  Acquirer  PlayerPosessions[] @relation("Acquire")
+  Charter   PlayerPosessions[] @relation("Charter")
 }
