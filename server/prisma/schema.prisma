@@ -23,26 +23,19 @@ model Player {
   userID Int
   gameID Int
 
-  Posessions         PlayerPosessions @relation(fields: [playerPosessionsID], references: [ID])
-  playerPosessionsID Int              @unique
+  Red      Int        @db.SmallInt
+  Green    Int        @db.SmallInt
+  Blue     Int        @db.SmallInt
+  Black    Int        @db.SmallInt
+  White    Int        @db.SmallInt
+  Golden   Int        @db.SmallInt
+
+  GameCard GameCard[]
 }
 
 model Game {
   ID      Int      @id @unique @default(autoincrement())
   Players Player[]
-}
-
-model PlayerPosessions {
-  ID            Int     @id @unique @default(autoincrement())
-  Red           Int     @db.SmallInt
-  Green         Int     @db.SmallInt
-  Blue          Int     @db.SmallInt
-  Black         Int     @db.SmallInt
-  White         Int     @db.SmallInt
-  Golden        Int     @db.SmallInt
-  AcquiredCards Card[]  @relation("Acquire")
-  ChartedCards  Card[]  @relation("Charter")
-  Player        Player?
 }
 
 enum Colour {
@@ -54,7 +47,7 @@ enum Colour {
 }
 
 model Card {
-  ID        Int                @id @unique @default(autoincrement())
+  ID        Int        @id @unique @default(autoincrement())
   CostRed   Int
   CostGreen Int
   CostBlue  Int
@@ -62,6 +55,28 @@ model Card {
   CostWhite Int
   Score     Int
   Colour    Colour
-  Acquirer  PlayerPosessions[] @relation("Acquire")
-  Charter   PlayerPosessions[] @relation("Charter")
+  GameCard  GameCard[]
+}
+
+enum GameCardStatus {
+  // in possession of a Player
+  Acquired
+  // held by a Player
+  Charted
+  // in stack, not yet available
+  Hidden
+  // laid out on table, visible to all Players
+  Drawn
+}
+
+model GameCard {
+  ID       Int            @id @unique @default(autoincrement())
+
+  Card     Card           @relation(fields: [cardID], references: [ID])
+  cardID   Int
+
+  Player   Player?        @relation(fields: [playerID], references: [ID])
+  playerID Int?
+
+  Status   GameCardStatus
 }
