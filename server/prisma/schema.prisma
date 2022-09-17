@@ -23,19 +23,20 @@ model Player {
   userID Int
   gameID Int
 
-  Red      Int        @db.SmallInt
-  Green    Int        @db.SmallInt
-  Blue     Int        @db.SmallInt
-  Black    Int        @db.SmallInt
-  White    Int        @db.SmallInt
-  Golden   Int        @db.SmallInt
+  Red    Int @db.SmallInt
+  Green  Int @db.SmallInt
+  Blue   Int @db.SmallInt
+  Black  Int @db.SmallInt
+  White  Int @db.SmallInt
+  Golden Int @db.SmallInt
 
   GameCard GameCard[]
 }
 
 model Game {
-  ID      Int      @id @unique @default(autoincrement())
-  Players Player[]
+  ID       Int        @id @unique @default(autoincrement())
+  Players  Player[]
+  GameCard GameCard[]
 }
 
 enum Colour {
@@ -70,13 +71,16 @@ enum GameCardStatus {
 }
 
 model GameCard {
-  ID       Int            @id @unique @default(autoincrement())
+  ID Int @id @unique @default(autoincrement())
 
-  Card     Card           @relation(fields: [cardID], references: [ID])
-  cardID   Int
+  Card   Card @relation(fields: [cardID], references: [ID])
+  cardID Int
 
-  Player   Player?        @relation(fields: [playerID], references: [ID])
+  Player   Player? @relation(fields: [playerID], references: [ID])
   playerID Int?
 
-  Status   GameCardStatus
+  Game   Game @relation(fields: [gameID], references: [ID])
+  gameID Int
+
+  Status GameCardStatus @default(Hidden)
 }
