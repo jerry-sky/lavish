@@ -1,6 +1,6 @@
 import Fastify from 'fastify'
 import FastifyCookie from '@fastify/cookie'
-import FastifySession from 'fastify-session'
+import FastifySession from '@fastify/session'
 import FastifyCORS from '@fastify/cors'
 
 /**
