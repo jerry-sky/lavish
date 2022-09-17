@@ -37,6 +37,13 @@ model Game {
   ID       Int        @id @unique @default(autoincrement())
   Players  Player[]
   GameCard GameCard[]
+
+  Red    Int @db.SmallInt
+  Green  Int @db.SmallInt
+  Blue   Int @db.SmallInt
+  Black  Int @db.SmallInt
+  White  Int @db.SmallInt
+  Golden Int @db.SmallInt
 }
 
 enum Colour {
