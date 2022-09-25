@@ -1,7 +1,7 @@
 import { Credentials } from '../../../../model/Credentials'
 import { RegisterNewUserRequest } from '../../../../model/ServerRequests/RegisterNewUser'
 import { UserData } from '../../../../model/UserData'
-import { Database } from '../Database'
+import { Database } from '../Database/Database'
 import { UserAlreadyExistsException } from './Exceptions/UserAlreadyExists'
 import { UserNotFoundException } from './Exceptions/UserNotFound'
 import { UserPasswordInvalidException } from './Exceptions/UserPasswordInvalid'
