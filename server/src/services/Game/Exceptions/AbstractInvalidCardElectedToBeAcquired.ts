@@ -1,5 +1,0 @@
-class AbstractInvalidCardElectedToBeAcquired extends Error {}
-
-export class CardElectedToBeAcquiredHidden extends AbstractInvalidCardElectedToBeAcquired {}
-export class CardElectedToBeAcquiredDoesNotExist extends AbstractInvalidCardElectedToBeAcquired {}
-export class CardElectedToBeAcquiredNotAffordable extends AbstractInvalidCardElectedToBeAcquired {}

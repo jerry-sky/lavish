@@ -55,15 +55,15 @@ enum Colour {
 }
 
 model Card {
-  ID       Int        @id @unique @default(autoincrement())
-  Red      Int
-  Green    Int
-  Blue     Int
-  Black    Int
-  White    Int
-  Score    Int
-  Colour   Colour
-  GameCard GameCard[]
+  ID        Int        @id @unique @default(autoincrement())
+  CostRed   Int
+  CostGreen Int
+  CostBlue  Int
+  CostBlack Int
+  CostWhite Int
+  Score     Int
+  Colour    Colour
+  GameCard  GameCard[]
 }
 
 enum GameCardStatus {
