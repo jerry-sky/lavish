@@ -1,8 +1,8 @@
 export enum TokenColour {
-	Red,
-	Green,
-	Blue,
-	Black,
-	White,
-	Golden,
+	Red = 'Red',
+	Green = 'Green',
+	Blue = 'Blue',
+	Black = 'Black',
+	White = 'White',
+	Golden = 'Golden',
 }
